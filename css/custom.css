@@ -1,0 +1,29 @@
+/* O :root é utilizado para a declaração de variáveis globais do CSS, usadas no framework
+Ele permite que certas configurações de estilo da página sejam alteradas com facilidade */
+:root {
+    --blue: #4267b2;
+    --darkishblue: #3b5da0;
+    --darkblue: #243963;
+    --darkerblueinutilizado: #1a2947;
+    --white: #F5F5F5;
+}
+
+/* ------ Seção de id's, servem p/ adicionar características específicas de tags
+Por serem específicas, não podem ser colocadas em uma classe */
+
+	#imgBackground {
+		background-image: url("../img/backimage.png");
+	}
+
+	/* Define os 3 possíveis fundos para apresentação do topo */
+	#presentBg1 {
+		background-image: url("../img/bg1.png");
+	}
+	#presentBg2 {
+		background-image: url("../img/bg2.png");
+	}
+	#presentBg3 {
+		background-image: url("../img/bg3.png");
+	}
+
+/* ------ Fim da seção de id's */

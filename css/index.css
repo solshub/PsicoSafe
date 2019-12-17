@@ -1,0 +1,550 @@
+/* ------ Seção para códigos gerais a serem realizadas diretamente em tags
+Em geral, servem para tirar margens indesejadas que podem atrapalhar
+As propriedades colocadas aqui são simples e globais */
+
+	html {
+		scroll-behavior: smooth;
+	}
+	body{
+		margin: 0 0 50px 0;
+		background-color: var(--white);
+		font-family: 'Lato', sans-serif;
+	}
+	figure, header, main, footer, h1, h2, h3, h4, p {
+		margin: 0;
+	}
+	a {
+		text-decoration: none;
+	}
+	article h1 {
+		font-size: 1.5em;
+	}
+	@media (max-width: 992px) {
+		ul, li{
+			font-size: 1.5em;
+		}
+		ul {
+			display: none !important;
+		}
+		ul:nth-child(1), ul:nth-child(2) {
+			display: inline-block !important;
+		}
+	}
+
+/* ------ Fim da seção de códigos gerais */
+
+/* ------ Seção de classes utilitárias, servem p/ processos repetitivos
+Classes podem ser utilizadas em várias tags diferentes c/ propósitos parecidos */
+
+	/* ".center" serve para centralizar de forma simples */
+	.center {
+		margin: 0 auto;
+	}
+	/* ".tcenter" serve para centralizar texto de forma simples */
+	.tcenter {
+		text-align: center;
+	}
+	/* ".reference" serve para estilizar um texto de referência */
+	.reference {
+		font-size: 13px;
+		text-align: left;
+		font-style: italic;
+	}
+	/* ".reference" serve para estilizar uma citação grande */
+	.citation {
+		padding: 0 40px;
+		font-style: italic;
+		text-align: center;
+	}
+	.citation h1 {
+		font-style: normal;
+		font-size: 2em;
+		margin: 10 0 0 0 !important;
+	}
+	/* ".centerwrap" serve como um embrulho para centralizar conteúdo inline-block */
+	.centerwrap {
+		margin: 0 auto;
+		text-align: center;
+	}
+	/* ".fBorder" adiciona uma borda arredondada simples em todos os 4 cantos */
+	.fBorder {
+		border-radius: 10px;
+		overflow: hidden;
+	}
+	/* ".bShadow adiciona um sombreado simples no objeto */
+	.bShadow {
+		box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+	}
+	/* ".border" adiciona uma borda personalizada, com uma barrinha e sombra */
+	.border {
+		border-top: 13px solid var(--blue);
+		padding-top: 20px;
+		padding-bottom: 20px;
+		border-radius: 0px 0px 10px 10px;		
+	}
+	/* ".backimage" cria uma caixa de imagem como plano de fundo no topo da página */
+	/* ".gradient", quando presente em ".backimage", cria um gradiente sobre a caixa de imagem */
+	.backimage {
+		position: absolute;
+		background-size: cover;
+		height: 865px; width: 100%;
+		z-index: -1;
+		top: 0;
+	}
+	.backimage.gradient {
+		height: 866px;
+		background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, var(--white) 100%);
+	}
+	@media (max-width: 1000px) {
+		.backimage {
+			height: 540px;
+		}
+		.backimage.gradient {
+			height: 541px;
+		}
+	}
+	/* ".transition" configura um efeito de transição curta válida para toda mudança de atributos */
+	.transition {
+		transition: all 0.5s;
+	}
+	/* ".hidden" deixa um elemento completamente invisível na página, como se não estivesse lá */
+	.hidden {
+		display: none;
+	}
+	/* ".justify" deixa todo o conteúdop de texto dentro de um elemento com alinhamento justificado */
+	.justify {
+		text-align: justify;
+	}
+	/* ".stylize" define que as tags de texto do elemento receberão estilizações especiais */
+	.stylize h1 {
+		color: var(--darkishblue);
+		margin: 10px 0;
+	}
+	.stylize h2 {
+		color: var(--darkblue);
+	}
+	.stylize p {
+		margin: 8px 0;
+	}
+	.stylize h3 {
+		margin: 8px 0;
+	}
+	.stylize h4 {
+		margin-bottom: 3px;
+		color: red;
+		animation: blob 0.25s;
+	}
+	/* ".active" deixa o elemento com opacidade máxima, por ser "!important",
+	nenhuma outra definição de opacidade importará mais do que essa */
+	.active {
+		opacity: 1 !important;
+	}
+	.updownmargin {
+		margin: 10px auto;
+	}
+
+/* ------ Fim da seção de classes utilitárias */
+
+/* ------ Seção de classes comuns, cada conjunto serve para algo diferente
+Com elas, será construído o framework caseiro da página */
+
+	/* Conjunto para criar um painel com uma imagem e uma caixa de texto ao lado
+	existe um gradiente opcional que separa as duas, e uma div para justificar o texto
+	os elementos img servem para pngs (de texto) opcionais sobre a imagem
+	o footer dentro da caixa de texto esquerda estará sempre posicionado em baixo
+	o panelwrapper serve para encapsular tudo e facilitar a reutilização*/
+	.panelwrapper {
+		height: 775px; width: 100%;
+		min-width: 617px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 50px;
+	}
+	.panel {
+		position: relative;
+		height: 550px; min-width: 617px;
+		width: 90%; max-width: 1000px;
+	}
+	.logo {
+		user-select: none;
+		position: absolute;
+		margin: 15px 0 0 15px;
+	}
+	.panel img:not(.logo) {
+		user-select: none;
+		position: absolute;
+		width: 510px;
+		image-rendering: crisp-edges;
+		bottom: 10px; right: 265px;
+		opacity: 0;
+	}
+	.panel figure {
+		height: 100%;
+		float: left;
+		width: 80%;
+		transition: background-image 0.5s;
+	}
+	.panel article {
+		position: absolute;
+		background-color: white;
+		height: 100%;
+		right: 0;
+		box-sizing: border-box;
+		width: 260px;
+	}
+	.panel article.gradient {
+		background: linear-gradient(to right, rgba(255,255,255,0) 0%, white 10px);
+	}
+	.panel article div {
+		position: relative;
+		margin: 10px 10px 0px 18px;
+		margin-left: 18px;
+		height: 100%;
+		font-family: 'Lato', sans-serif;
+	}
+	.panel article div footer {
+		position: absolute;
+		bottom: 25px;
+		font-size: 13px;
+	}
+	/* São criados também botoes que permitem alternar entre as imagens
+	de apresentação. Os botões usam animações em CSS e estão integrados ao JS */
+	.buttons {
+		user-select: none;
+		position: absolute;
+		margin-left: 10px; margin-bottom: 15px;
+		bottom: 0;
+	}
+	.buttons div {
+		margin-left: 5px;
+		height: 30px; width: 30px;
+		display: inline-block;
+		background-color: white;
+		border-radius: 30px;
+		opacity: 0.7;
+		cursor: pointer;
+	}
+	/* A parte @media do código serve para a definição das configurações
+	de acordo diferentes tamanhos de janela, alterando as coisas tanto no navegador
+	quanto em aparelhos móveis de acordo a proporção de tela de cada um. */
+	@media (max-width: 1000px) {
+		.panelwrapper {
+			height: 541px;
+			margin: 0;
+		}
+		.panel {
+			border-radius: 0px;
+			width: 100%; height: 500px;
+		}
+		.panel img:not(.logo) {
+			right: 25px;
+			width: 550px;
+		}
+		.panel .logo {
+			width: 180px;
+			margin-left: 25px;
+		}
+		.panel .buttons {
+			margin-left: 20px;
+		}
+		.panel figure {
+			width: 100%;
+		}
+		.panel article {
+			width: 0px;
+		}
+	}
+
+	/* Conjunto para criar uma caixa de título com um painel lateral de navegação
+	cada opção pode conter uma ou duas linhas de texto, além de uma imagem ao lado
+	quando o mouse estiver sobre uma opção, ela mudará de cor de fundo
+	além disso, cada opção (menos a atualmente ativa) conta com um separador */
+	.titlebox {
+		position: relative;
+		margin-bottom: 45px;
+		background-color: var(--blue);
+		height: 70px; width: 90%; min-width: 617px; max-width: 1000px;
+		color: white;
+		text-transform: uppercase;
+	}
+	.titlebox nav {
+		margin: 0 5px;
+		height: 100%;
+		display: table;
+		float: right;
+	}
+	.titlebox nav .option {
+		user-select: none;
+		display: table-cell;
+		width: 155px;
+		vertical-align: middle;
+		text-align: center;
+	}
+	.titlebox nav .option:not(.active)::before {
+		background: rgba(0, 0, 0, .2);
+		content: '';
+		display: inline-block;
+		height: 28px;
+		width: 1px;
+	}
+	.titlebox nav div {
+		display: inline-block;
+	}
+	.titlebox nav h1 img {
+		height: 35px;
+	}
+	.titlebox nav h1 {
+		padding: 5px 7px;
+		border-radius: 5px;
+		display: inline-block;
+	}
+	.titlebox nav h1 a {
+		color: white;
+	}
+	.titlebox nav h1 span {
+		font-size: 12px; line-height: 10px;
+	}
+	.titlebox nav .option:not(.active) h1:hover {
+		background-color: var(--darkishblue);
+		cursor: pointer;
+	}
+	.titlebox nav .option.active {
+		position: absolute;
+		top: 50%; left: 0px; transform: translateY(-50%);
+	}
+	.titlebox nav .option.active:not(#bgeral) {
+		left: 10px;
+	}
+	@media (max-width: 1000px) {
+		.titlebox {
+			width: 100%; border-radius: 0;
+		}
+	}
+
+	/* Conjunto para criar uma grande caixa de texto para adicionar conteúdo comum
+	Essa possui algumas coisas especiais, como uma caixa p/ imagens personalizada */
+	.content {
+		padding: 20px 125px;
+		box-sizing: border-box;
+		background-color: white;
+		width: 90%; min-width: 617px; max-width: 1000px;	
+	}
+	@media (max-width: 1000px) {
+		.content {
+			padding: 20px 40px;
+			width: 100%;
+		}
+	}
+	.content img {
+		/* beta feature */
+		background-color: blue;
+		margin: 10px 5px;
+		border: 8.5px solid var(--white);
+		box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+		display: inline-block;
+	}
+	.content ul {
+		display: inline-block;
+		margin: 0;
+		text-align: left;
+	}
+	.content section hr {
+		margin: 23px 0;
+	}
+	.content .links input {
+		margin: 0 5px;
+	}
+
+	/* Configura um caixote de texto de fundo escuro, acompanhado de um botão
+	que permite que ela seja minimizada ou maximizada a vontade */
+	.textbox {
+		background-color: var(--white);
+		padding: 2px 50px;
+		position: relative;
+		margin: 20px 0;
+	}
+	.textbox .minimize {
+		user-select: none;
+		background-color: var(--blue);
+		color: white;
+		position: absolute;
+		width: 30px; height: 30px;
+		text-align: center; vertical-align: middle;
+		line-height: 26px; font-size: 30px;
+		font-weight: bold;
+		opacity: 0.7;
+		right: 45px; top: 11px;
+		border-radius: 20px;
+	}
+	@media (max-width: 1000px) {
+		.textbox {
+			padding: 2px 20px;
+		}
+		.textbox .minimize {
+			right: 10px; top: 10px;
+		}
+	}
+	.textbox .minimize:hover {
+		opacity: 1;
+		cursor: pointer;
+	}
+	.textbox.mini article {
+		display: none;
+	}
+
+	.questions p {
+		font-weight: bold;
+		font-size: 1.25em;
+	}
+
+	/* Conjunto para criar os opções númericas para cada pergunta, o botão númerico
+	que estiver	marcado(ativo) receberá um estilo diferente dos outros */	
+	.numberbuttons {
+		height: 51px;
+		user-select: none;
+		text-align: center;
+		position: relative;
+	}
+	.numberbuttons hr {
+		position: absolute;
+		background-color: var(--darkblue);
+		color: red;
+		height: 2px;
+		width: 415px;
+		border: none;
+		top: 0; bottom: 0; left: 0; right: 0;
+		margin: auto !important;
+	}
+	.numberbuttons .number {
+		position: relative;
+		background-color: var(--blue);
+		border-radius: 30px;
+		margin: 3px;
+		width: 35px; height: 35px;
+		line-height: 34px;
+		font-weight: bold;
+		font-size: 18px;
+		color: white;
+		text-align: center;
+		vertical-align: middle;
+		display: inline-block;
+		z-index: 1;
+	}
+	.numberbuttons .number:hover:not(.active) {
+		cursor: pointer;
+		animation: hovernumber 0.3s forwards;
+	}
+	@keyframes hovernumber {
+		0% { width: 35px; height: 35px;
+			line-height: 34px; font-size: 18px;
+			background-color: var(--blue); }
+		100% { width: 42px; height: 42px;
+			line-height: 41px; font-size: 23px;
+			background-color: var(--darkishblue); }
+	}		
+	.numberbuttons .number.active {
+		background-color: var(--darkblue);
+		width: 45px; height: 45px;
+		line-height: 44px;
+		font-size: 25px;
+		animation: selectnumber 0.3s forwards;
+	}
+	@keyframes selectnumber {
+		0% { width: 42px; height: 42px;
+			line-height: 41px; font-size: 23px;
+			background-color: var(--blue); }
+		100% { width: 45px; height: 45px;
+			line-height: 44px; font-size: 25px;
+			background-color: var(--darkblue); }
+	}
+	@media (max-width: 1000px) {
+		.numberbuttons {
+			height: 89.25px;
+		}
+		.numberbuttons hr {
+			height: 3.5px;
+			width: 830px;
+		}
+		.numberbuttons .number {
+			border-radius: 52.5px;
+			margin: 5.25px;
+			width: 61.25px; height: 61.25px;
+			line-height: 59.5px;
+			font-size: 31.5px;
+		}
+		@keyframes hovernumber {
+			0% { width: 61.25px; height: 61.25px;
+				line-height: 59.5px; font-size: 31.5px; }
+			100% { width: 73.5px; height: 73.5px;
+				line-height: 71.25px; font-size: 40.25px; }
+		}		
+		.numberbuttons .number.active {
+			width: 78.75px; height: 78.75px;
+			line-height: 77px;
+			font-size: 43.75px;
+		}
+		@keyframes selectnumber {
+			0% { width: 73.5px; height: 73.5px;
+				line-height: 71.75px; font-size: 40.25px; }
+			100% { width: 78.75px; height: 78.75px;
+				line-height: 77px; font-size: 43.75px; }
+		}
+	}
+
+	/* Conjunto para criar um botão estilizado e personalizado. Ele possui mudanças
+	de estilo para quando estiver com o mouse em cima, e também para quando for clicado */
+	.button{
+		user-select: none;
+		background-color: var(--blue);
+		padding: 3px 14px;
+		border-radius: 20px;
+		border: none; cursor: pointer;
+		font-size: 16px; font-weight: bold; line-height: 22px;
+		color: white; text-transform: uppercase;
+		transition: all 0.2s;
+	}
+	@media (max-width: 1000px) {
+		.button {
+			padding: 6px 28px;
+			border-radius: 40px;
+			font-size: 32px; font-weight: bold; line-height: 44px;
+		}
+	}
+	.button:hover{
+		box-shadow: 0 6px 8px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+		background-color: var(--darkishblue);
+	}
+	.button:active{
+		background-color: var(--darkblue);
+		animation: pulse 0.5s;
+	}
+	.button:focus{
+		outline: none;
+	}
+
+	@keyframes blob {
+		0% {
+			transform: scale(0.96);
+		}
+		70% {
+			transform: scale(1);
+		}
+		100% {
+			transform: scale(0.96);
+		}
+	}
+
+	@keyframes pulse {
+		0% {
+			box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.6);
+		}
+		70% {
+			box-shadow: 0 0 0 6px rgba(0, 0, 0, 0);
+		}
+		100% {
+			box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+		}
+	}
+
+/* ------ Fim da seção de classes comuns */
