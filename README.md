@@ -7,7 +7,7 @@ O código todo é apropriadamente documentado, e organizado para ser intuitivo e
 Os trechos são todos projetados para poderem ser reaproveitados em outros sites ou projetos, apenas mudando
 certas propriedades de forma correta, economizando linhas de código no futuro.
 
-Desenvolvedor: Matheus Geremias | Acesso: [PsicoSafe.epizy.com](http://psicosafe.epizy.com/)
+Desenvolvedora: Sol | Acesso: [PsicoSafe.epizy.com](http://psicosafe.epizy.com/)
 ## Proposta
 O desenvolvimento de um site simples utilizando o máximo possivel das linguagens JavaScript, HTML e CSS
 todas focadas na programação para front-end, visando a formulação de algo parecido a um pequeno framework próprio.
