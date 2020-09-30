@@ -1,3 +1,5 @@
+Acesse o site: http://psicosafe.epizy.com/
+
 # [PsicoSafe](PsicoSafe.epizy.com)
 TCC de Tecnico em Informática 2019 na ETEC Pedro Badran.
 Um site com um quiz simples para ajuda psicológica sem a utilização de nenhum framework,
@@ -7,7 +9,7 @@ O código todo é apropriadamente documentado, e organizado para ser intuitivo e
 Os trechos são todos projetados para poderem ser reaproveitados em outros sites ou projetos, apenas mudando
 certas propriedades de forma correta, economizando linhas de código no futuro.
 
-Desenvolvedora: Sol | Acesso: [PsicoSafe.epizy.com](http://psicosafe.epizy.com/)
+Desenvolvedora: Sol | 3° Ensino Médio integrado ao Técnico em Informática
 ## Proposta
 O desenvolvimento de um site simples utilizando o máximo possivel das linguagens JavaScript, HTML e CSS
 todas focadas na programação para front-end, visando a formulação de algo parecido a um pequeno framework próprio.
