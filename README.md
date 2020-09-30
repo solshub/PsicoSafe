@@ -1,6 +1,6 @@
 Acesse o site: http://psicosafe.epizy.com/
 
-# [PsicoSafe](PsicoSafe.epizy.com)
+# [PsicoSafe](http://psicosafe.epizy.com/)
 TCC de Tecnico em Informática 2019 na ETEC Pedro Badran.
 Um site com um quiz simples para ajuda psicológica sem a utilização de nenhum framework,
 testando as habilidades em JavaScript, CSS e HTML puros.
